@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+        background-image: url("Images/back8.jpg");
+		background-size:100% 100%;
+		background-repeat: no-repeat;
+     }
+
+
+.list2 {
+  width: 100%;
+  height:100px;
+  max-width: 1920px;
+  margin: auto;
+}
+
+
+
+
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;margin:0}
+.SlideShow {display:none}
+
+
+.Slide_Show {
+  width: 100%;
+  max-width: 1900px;
+  position: relative;
+  margin: auto;
+}
+
+
+.prevButton, .nextButton {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+
+.nextButton {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prevButton:hover, .nextButton:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+  .prevButton, .nextButton,.text {font-size: 11px}
+}
+
+
+
+.listRegTabs {
+    float: left;
+    width: 50%;
+    padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 1%;
+}
+
+.list1 {
+    list-style-type: none;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.list1:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.list1 .list2 {
+    background-color: #ca5265;
+    color: white;
+    font-size: 25px;
+}
+
+.list1 li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+.list1 .list3 {
+    background-color: #eee;
+    font-size: 20px;
+}
+
+.list{
+        background-color: white;
+     }
+
+.button {
+    background-color: #ca5265;
+    border: none;
+    color: white;
+	text-decoration: none;
+    font-size: 18px;
+    padding: 10px 25px;
+    text-align: center;    
+}
+
+@media only screen and (max-width: 600px) {
+    .listRegTabs {
+        width: 100%;
+    }
+}
+
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.5s;
+  position: relative;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+footer{
+		        background-color:#707070;
+				text-align:center;
+				color:white;
+				padding:10px;
+				font-size:120%;
+				margin:auto;
+		      }
+footer a{
+            color:#e6e6e6;
+            text-decoration:none;
+            
+            padding:10px;
+        }	
+
+/*------------------------------------------ Login Form --------------------------------------------------*/
+
+.fullform {
+            padding: 15px;
+          }
+
+.cancelbutton {
+    padding: 14px 20px;
+    background-color: #cbcbb4;
+}
+
+.cancelbutton,.signupbutton {float:left;width:50%}
+		  	  
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px 20px;
+	display: inline-block;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;    
+}
+
+.form {
+    position: fixed;
+    display: none;
+    z-index: 1;
+    left: 0;
+    top: 0;
+	height: 100%;
+    width: 100%;
+    overflow: auto;
+	padding-top: 60px;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.form-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    width: 80%;
+}
+
+.formButtons::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+.close {
+    font-size: 45px;
+    font-weight: bold;
+	position: absolute;
+    right: 40px;
+    top: 20px;
+    color: #ff0000;
+}
+
+.close:hover,
+.close:focus {
+    color: #00ace6;
+    cursor: pointer;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+@media screen and (max-width: 300px) {
+    .cancelbutton, .signupbutton {
+       width: 100%;
+    }
+}		
+
+/*------------------------------------------ Login Form --------------------------------------------------*/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: 0;
+    top: 93px;
+    width: 30%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */	
+}	
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.LogFormCont {
+    padding: 16px;
+}
+
+input,select[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.close1 {
+    
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+	text-align:right;
+	float:right;
+}
+
+.close1:hover,
+.close1:focus {
+    color: red;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+<!----------------------------------------------------------- Header Content ----------------------------------------------------------------------------->
+<div class="list2">
+                 <p>
+					 <a href="Home.html"><img src="Images\logo1.png" style="float:left;width:300px;height:101px; margin:20px;"></a> 
+					  <br><br><br><br>
+					  <a style="float:right; margin-right:20px;" onclick="document.getElementById('id03').style.display='block'"><img src="Images\login.png" style="float:left;width:75px;height:33px; margin:0px;" onmouseover="bigImg(this)" onmouseout="normalImg(this)"></a>
+					  <a style="float:right; margin-right:20px;" onclick="downFunction()"><img src="Images\register.png" style="float:left;width:75px;height:33px; margin:0px;" onmouseover="bigImg(this)" onmouseout="normalImg(this)"></a> 				  
+                     </p>
+			    </p>
+</div>
+
+<div style="background-color:#707070; height:40px; margin-top:35px; margin-bottom:10px;"></div>
+
+<!-------------------------------------------------------------- Slide Show -------------------------------------------------------------------------------->
+<div class="Slide_Show">
+
+    <div class="SlideShow fade">
+        <div class="numbertext">1 / 4</div>
+        <img src="Images\4aa.jpg" style="width:100%;">
+    </div>
+
+    <div class="SlideShow fade">
+        <div class="numbertext">2 / 4</div>
+        <img src="Images\3aa.jpg" style="width:100%">
+    </div>
+
+    <div class="SlideShow fade">
+        <div class="numbertext">3 / 4</div>
+        <img src="Images\1aa.jpg" style="width:100%">
+    </div>
+
+    <div class="SlideShow fade">
+        <div class="numbertext">4 / 4</div>
+        <img src="Images\2aa.jpg" style="width:100%">
+    </div>
+
+    <a class="prevButton" onclick="Slides(-1)">&#10094;</a>
+    <a class="nextButton" onclick="Slides(1)">&#10095;</a>
+
+</div>
+
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>  
+</div>
+
+<div style="background-color:black; height:3px; margin-top:35px;"></div>
+
+<!----------------------------------------------------------- Cusomer/Business area ----------------------------------------------------------------------------->
+<h3 align="center" style="padding:1%;">Welcome..! Please Free register before using our site</h3>
+<div style="width:100%; height:550px; max-height:600px; margin-bottom:35px;">
+    <div class="listRegTabs">
+        <ul class="list1">
+        <li class="list2">Customer Area</li>
+        <li class="list3">For Wedding Users</li>
+        <li class="list">Buy wedding dresses,juweliers and other accessories</li>
+        <li class="list">Contact wedding planners</li>
+        <li class="list">All wedding services</li>
+        <li class="list">Book hotel packages,etc</li>
+        <li class="list3"><a href="#" class="button" onclick="document.getElementById('id01').style.display='block'"><span>Get Started</span></a></li>
+        </ul>
+    </div>
+
+    <div class="listRegTabs">
+        <ul class="list1">
+        <li class="list2" style="background-color:#62abea">Business Area</li>
+        <li class="list3">For Vendors</li>
+        <li class="list">Expand your wedding business</li>
+        <li class="list">Sell wedding products & services</li>
+        <li class="list">Gain more customers</li>
+        <li class="list">2GB Bandwidth</li>
+        <li class="list3"><a href="#" class="button" onclick="document.getElementById('id02').style.display='block'" style="background-color: #62abea;"><span>Get Started</span></a></li>
+        </ul>
+    </div>
+   
+</div>
+
+<!----------------------------------------------------------- Footer ----------------------------------------------------------------------------->
+<footer>
+       <a href="http://localhost/Project/php/About Us.php">About us</a>
+	   <a href="http://localhost/Project/php/Contact Us.php">Contact Us</a>
+	   <a href="">Privacy Policy</a>
+	   <a href="">Terms of Use</a>
+	   <a href="">Customer Service + FAQ</a><br><br>
+       Copyright @ www.siritha.lk,2017-All rights Reserved
+</footer>
+
+
+<!-------------------------------------------------- Login Form - Customer Area ------------------------------------------------------------------->
+<div id="id01" class="form">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Form">X</span>
+  <form class="form-content animate" onsubmit="return validateForm()" name="Registration_Form" method="post" style="width:50%; border: 3px solid #4CAF50;" action="http://localhost/Project/php/Add wedding user.php">
+    <div class="fullform">
+	
+	  <legend align="center"><h2>Signup Form</h2></legend>
+	  
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+      
+	  <label><b>Repeat Email</b></label>
+      <input type="text" placeholder="Repeat Email" name="email_Repeat" required>
+	  
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="pswrd" required>
+
+      <label><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="pswrd_repeat" required>
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="formButtons">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbutton">Cancel</button>
+        <button type="submit" class="signupbutton">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-------------------------------------------------- Login Form - Business Area ------------------------------------------------------------------->
+<div id="id02" class="form">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Form">X</span>
+  <form class="form-content animate" onsubmit="return validateForm()" name="Registration_Form" method="post" style="width:50%; border: 3px solid #4CAF50;" action="http://localhost/Project/php/Add vendor.php">
+    <div class="fullform">
+	
+	  <legend align="center"><h2>Signup Form</h2></legend>
+	  
+	  <label><b>Job Roll</b></label>
+      <select type="text" name="jobroll" required>
+	    <option value="ProductSeller">Product Seller</option>
+        <option value="WeddingPlanner">Wedding Planner</option>
+        <option value="ServiceProvider">Service Provider</option>
+	  </select>
+	  
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+      
+	  <label><b>Repeat Email</b></label>
+      <input type="text" placeholder="Repeat Email" name="email_Repeat" required>
+	  
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="pswrd" required>
+
+      <label><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="pswrd_repeat" required>
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="formButtons">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbutton">Cancel</button>
+        <button type="submit" class="signupbutton">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-------------------------------------------------- Login Form ------------------------------------------------------------------->
+<div id="id03" class="modal">
+  
+  <form class="modal-content animate" method="post" action="http://localhost/Project/php/Wedding user login.php">
+    
+    <div class="LogFormCont">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="email1" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="pswrd1" required>
+        
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="LogFormCont" style="background-color:#f1f1f1">
+      <p>Forgot <a href="#">password?</a><br/><br/>
+      Don't have an account? <a href="#">Sign up</a> <span onclick="document.getElementById('id03').style.display='none'" class="close1" title="Close Modal">&times;</span></p>
+    </div>
+  </form>
+</div>
+
+<script>
+
+// Slide Show -------------------------------------------------------------------------------------------------------------------------------------
+   var slideIndex = 1;
+   showSlides(slideIndex);
+
+   function Slides(n) {
+    showSlides(slideIndex += n);
+    }
+
+   function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+   function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("SlideShow");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+	
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+}
+
+    var xxx = 0;
+    timer();
+
+    function timer() {
+    var i;
+    var x = document.getElementsByClassName("SlideShow");
+    for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none";  
+        }
+    xxx++;
+    if (xxx > x.length) {xxx = 1}    
+    x[xxx-1].style.display = "block";  
+    setTimeout(timer, 3500);
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Login & Register Button-----------------------------------------------------------------------------------------------------------------------------
+    function bigImg(x) {
+        x.style.height = "37px";
+        x.style.width = "85px%";
+        }
+
+    function normalImg(x) {
+        x.style.height = "33px";
+        x.style.width = "75px";
+        }
+		
+	var form = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the form, close it
+    window.onclick = function(event) {
+        if (event.target == form) {
+            form.style.display = "none";
+        }
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// Top Register Button----------------------------------------------------------------------------------------------------------------------------------
+function downFunction() {
+    window.scrollBy(0,1000);	
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// Form Validation--------------------------------------------------------------------------------------------------------------------------------------
+function validateForm()
+            {   
+			    var jobroll = document.forms["Registration_Form"]["jobroll"].value;
+			    var email = document.forms["Registration_Form"]["email"].value;
+				var email_Repeat = document.forms["Registration_Form"]["email_Repeat"].value;
+				var pswrd = document.forms["Registration_Form"]["pswrd"].value;
+				var pswrd_repeat = document.forms["Registration_Form"]["pswrd_repeat"].value;
+				
+				if( checkEmail(email,"E-mail address",email_Repeat) )
+                    if( checkPassword(pswrd,pswrd_repeat) )
+					        return true;					
+					else
+					    return false;
+				else
+					return false;
+				
+			}
+				
+function checkEmail(elemValue1,field,elemValue2)
+            {    
+			    var atpos = elemValue1.indexOf("@");
+				var dotpos = elemValue1.indexOf(".");
+				
+				if( atpos<dotpos && dotpos!=-1 && atpos!=-1 )
+				    if(elemValue1==elemValue2)
+					
+					        return true;
+					else
+			        {
+					    alert("Email addresses are doesn't match");
+					    return false;
+				    }
+				else
+			    {
+					alert("Enter valid email address for "+field+" field");
+					return false;
+				}
+            }
+			
+function checkPassword(elemValue1,elemValue2)
+            {    
+			    var exp1 = /[0-9]/g;
+				var exp2 = /[a-z]/g;
+				var exp3 = /[A-Z]/g;
+				var exp4 = /\s/g;
+			    var exp5 = /\W/g;
+				
+				if(elemValue1.match(exp1))
+					if(elemValue1.match(exp2))
+						if(elemValue1.match(exp3))
+							if(!elemValue1.match(exp4))
+								if(elemValue1.match(exp5))
+									if(elemValue1.length>=8)
+										if(elemValue1==elemValue2)
+					                        return true;
+										else
+									    {
+										    alert("Passwords doesn't match")
+									    }
+									else
+									{
+										alert("Password must be at least 8 characters long")
+									}
+							    else
+			                    {
+					                alert("Password must be a combination of uppercase characters, lowercase characters, numeric characters and a special character.");
+					                return false;
+				                }
+                            else
+			                {
+					            alert("Password cannot contain spaces");
+					            return false;
+				            }						
+					    else
+			            {
+					        alert("Password must be a combination of uppercase characters, lowercase characters, numeric characters and a special character.");
+					        return false;
+				        }
+				    else
+			        {
+					    alert("Password must be a combination of uppercase characters, lowercase characters, numeric characters and a special character.");
+					    return false;
+				    }
+				else
+			    {
+					alert("Password must be a combination of uppercase characters, lowercase characters, numeric characters and a special character.");
+					return false;
+				}
+            }
+			
+// Login Form-------------------------------------------------------------------------------------------------------------------------------------------	
+var modal = document.getElementById('id03');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html> 
